@@ -1,8 +1,6 @@
 module github.com/yaseerhee/YOSKI
 
-go 1.16.4
+go 1.12
 
-
-require ( 
-
+require (
 )
