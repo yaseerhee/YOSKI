@@ -34,7 +34,7 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 	// En Go cuando nos interesa procear solo uno de los valores, donde deben ir el resto de valores que no nos interesan ponemos guion bajo
 	_, encontrado, _ := bd.NegocioYaExiste(t.Email)
 	// Controlamos que el email no exista en la bd
-	if encontrado == true {
+	if encontrado {
 		http.Error(w, "Ya existe un Negocio registrado con ese Email", 400)
 		return
 	}
@@ -45,7 +45,7 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if estado == false {
+	if !estado {
 		http.Error(w, "No se ha conseguido la insercion del registro del negocio", 400)
 		return
 	}
