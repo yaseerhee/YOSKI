@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/yaseerhee/YOSKI/middlew"
+	"github.com/yaseerhee/YOSKI/routers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
@@ -13,7 +15,7 @@ import (
 func Controladores() {
 	router := mux.NewRouter()
 
-	
+	router.HandleFunc("/registro", middlew.InfoBD(routers.Registro)).Methods("POST")
 
 
 
