@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/yaseerhee/YOSKI/middlew"
-	"github.com/yaseerhee/YOSKI/routers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"github.com/yaseerhee/YOSKI/middlew"
+	"github.com/yaseerhee/YOSKI/routers"
 )
 
 // Controladores sirve para crear mi puerto, el controlador y pongo a escuchar al servidor en el 8080
@@ -16,8 +16,6 @@ func Controladores() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/registro", middlew.InfoBD(routers.Registro)).Methods("POST")
-
-
 
 	//Miramos si tenemos un puerto
 	PORT := os.Getenv("PORT")
