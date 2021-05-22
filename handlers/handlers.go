@@ -13,6 +13,10 @@ import (
 func Controladores() {
 	router := mux.NewRouter()
 
+	
+
+
+
 	//Miramos si tenemos un puerto
 	PORT := os.Getenv("PORT")
 	// Si no hay un puerto, vamos a forzar a que salga por el puerot 8080
