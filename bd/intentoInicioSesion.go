@@ -5,10 +5,10 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// intentoInicioSesion comprueba la sesion en BD
-func intentoInicioSesion(email string, password string) (models.Negocio, bool) {
+// IntentoInicioSesion comprueba la sesion en BD
+func IntentoInicioSesion(email string, password string) (models.Negocio, bool) {
 	// revisamos si existe el usuario
-	neg, encontrado,_ := NegocioYaExiste(email)
+	neg, encontrado, _ := NegocioYaExiste(email)
 	if !encontrado {
 		return neg, false
 	}

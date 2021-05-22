@@ -5,12 +5,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/yaseerhee/YOSKI/bd"
 	"github.com/yaseerhee/YOSKI/jwt"
 	"github.com/yaseerhee/YOSKI/models"
 )
 
 // inicioSesion sirve para que el negocio pueda acceder a su cuenta
-func inicioSesion(w http.ResponseWriter, r *http.Request) {
+func InicioSesion(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json") // seteamos el Header y decimos que va  llegar en formato json
 
 	var t models.Negocio
@@ -29,7 +30,7 @@ func inicioSesion(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// llamamos al intento de inicio sesion
-	registro, existe := bd.intentoInicioSesion(t.Email, t.Password)
+	registro, existe := bd.IntentoInicioSesion(t.Email, t.Password)
 	if !existe {
 		http.Error(w, "Nombre de negocio y/o contraseña incorrectas ", 400)
 		return
