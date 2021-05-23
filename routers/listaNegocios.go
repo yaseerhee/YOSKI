@@ -11,9 +11,9 @@ import (
 // Lista de negocios sirve para ver los negocios
 func ListaNegocios(w http.ResponseWriter, r *http.Request) {
 	// Capturamos los parametros a buscar
-	tipoNegocio := r.URL.Query().Get("tipo")
-	pagina := r.URL.Query().Get("pagina")
-	buscador := r.URL.Query().Get("buscador")
+	tipoNegocio := r.URL.Query().Get("type")
+	pagina := r.URL.Query().Get("page")
+	buscador := r.URL.Query().Get("search")
 
 	// PASAMOS LA INFO A ENTERO DE 64
 	pagTemp, err := strconv.Atoi(pagina)

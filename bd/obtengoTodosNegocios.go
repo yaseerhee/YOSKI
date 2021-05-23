@@ -41,33 +41,37 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 		return resultados, false
 	}
 
-	var existe, incluir bool
+	var encontrado, incluir bool
 	// Recorremos la coleccion que cumple la condicion
 	for tabla.Next(contexto) {
-		var pos models.Negocio
+		var s models.Negocio
 		//grabamos en cada posicion de la tabla y lo guardamos en modelo negocio para obtener su info
-		err := tabla.Decode(&pos)
+		err := tabla.Decode(&s)
 		if err != nil {
 			fmt.Println(err.Error())
 			return resultados, false
 		}
 		var seguidores models.Relacion
 		seguidores.NegocioID = ID
-		seguidores.NegocioRelacionID = pos.ID.Hex() // dE CADA NEGOCIO EXTRAIGO EL ID
+		seguidores.NegocioRelacionID = s.ID.Hex() // dE CADA NEGOCIO EXTRAIGO EL ID
 		// sirve para saber si tenemos que incluir el usuario por defecto no
 		incluir = false
 		// comprobamos si no lo encuentra lo añade
-		existe, err = ComprobarRelacionNegocios(seguidores)
+		encontrado, err = ComprobarRelacionNegocios(seguidores)
 		if err != nil {
 			fmt.Println(err.Error())
 			return resultados, false
 		}
-		if tipo == "nuevo" && !existe {
-			incluir = true
+		if tipo == "new" {
+			if !encontrado {
+				incluir = true
+			}
 		}
 		// solo quiero listado de los que sigo
-		if tipo == "siguiendo" && existe {
-			incluir = true
+		if tipo == "follow" {
+			if encontrado {
+				incluir = true
+			}
 		}
 		// Para evitar seguirme a mi mismo
 		if seguidores.NegocioRelacionID == ID {
@@ -75,16 +79,15 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 		}
 
 		if incluir {
-
 			// Campos que no quiero que muestre los blanqueo
-			pos.Password = ""
-			pos.Biografia = ""
-			pos.SitioWeb = ""
-			pos.Ubicacion = ""
-			pos.Banner = ""
-			pos.Email = ""
+			s.Password = ""
+			s.Biografia = ""
+			s.SitioWeb = ""
+			s.Ubicacion = ""
+			s.Banner = ""
+			s.Email = ""
 			// Cogemos los datos y los añadimos anuestro resultadp
-			resultados = append(resultados, &pos)
+			resultados = append(resultados, &s)
 		}
 	}
 	// comprobamos si hay error
