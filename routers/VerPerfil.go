@@ -8,7 +8,7 @@ import (
 )
 
 // VerPerfil permite coger los valores del Perfil
-func VerPerfil(w http.ResponseWriter, r http.Request) {
+func VerPerfil(w http.ResponseWriter, r *http.Request) {
 	ID := r.URL.Query().Get("id") // rECOGEMOS EL ID DE LA PETICION
 	if len(ID) < 1 {
 		// SI ES MENOR A UNO NO ENCONTRO LA VARIABLE
