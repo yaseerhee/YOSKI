@@ -20,17 +20,17 @@ func ComprobarRelacionNegocios(t models.Relacion) (bool, error) {
 	db := MongoC.Database("yoski")
 	//cOGEMOS LA COLECCION NEGOCIO
 	col := db.Collection("relacion")
-	// creamos la condicion 
+	// creamos la condicion
 	condicion := bson.M{
 		"negocioId":         t.NegocioID,
-		"negocioRelacionId": t.NegocioRelacionID,
+		"negociorelacionId": t.NegocioRelacionID,
 	}
 	// objeto relacion
 	var resultado models.Relacion
 	fmt.Println(resultado)
 	// buscamos en nuestra coleccion
 	err := col.FindOne(contexto, condicion).Decode(&resultado)
-	// si hay error 
+	// si hay error
 	if err != nil {
 		fmt.Println(err.Error())
 		return false, err
