@@ -23,6 +23,11 @@ func Controladores() {
 	router.HandleFunc("/publicacion", middlew.InfoBD(middlew.ValidacionJWT(routers.GuardoPublicacion))).Methods("POST")
 	router.HandleFunc("/leoPublicacion", middlew.InfoBD(middlew.ValidacionJWT(routers.LeoPublicaciones))).Methods("GET")
 	router.HandleFunc("/eliminarPublicacion", middlew.InfoBD(middlew.ValidacionJWT(routers.EliminarPublicacion))).Methods("DELETE")
+	// endPoints imagenes
+	router.HandleFunc("/subirAvatar", middlew.InfoBD(middlew.ValidacionJWT(routers.SubirAvatar))).Methods("POST")
+	router.HandleFunc("/subirBanner", middlew.InfoBD(middlew.ValidacionJWT(routers.SubirBanner))).Methods("POST")
+	router.HandleFunc("/obtenerAvatar", middlew.InfoBD(routers.ObtenerAvatar)).Methods("GET")
+	router.HandleFunc("/obtenerBanner", middlew.InfoBD(routers.ObtenerBanner)).Methods("GET")
 
 	//Miramos si tenemos un puerto
 	PORT := os.Getenv("PORT")
