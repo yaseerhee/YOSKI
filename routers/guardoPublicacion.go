@@ -15,7 +15,10 @@ func GuardoPublicacion(w http.ResponseWriter, r *http.Request) {
 	var mensaje models.Publicacion
 	// DECODIFICAMOS EL JSON
 	err := json.NewDecoder(r.Body).Decode(&mensaje)
-
+	if err != nil {
+		http.Error(w, "Fallo en la Decodificacion "+err.Error(), 400)
+		return
+	}
 	// sE LO PASAMOS A NUESTRO OBJETO GUARDAPUBLICACION
 	registro := models.GuardoPublicacion{
 		NegocioID: IDNegocio,
