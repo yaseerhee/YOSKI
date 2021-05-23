@@ -17,6 +17,7 @@ func Controladores() {
 	// endPoints
 	router.HandleFunc("/registro", middlew.InfoBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/inicioSesion", middlew.InfoBD(routers.InicioSesion)).Methods("POST")
+	router.HandleFunc("/verPerfil", middlew.InfoBD(middlew.ValidacionJWT(routers.VerPerfil))).Methods("POST")
 
 	//Miramos si tenemos un puerto
 	PORT := os.Getenv("PORT")
