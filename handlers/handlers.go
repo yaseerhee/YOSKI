@@ -33,6 +33,7 @@ func Controladores() {
 	router.HandleFunc("/crearRelacion", middlew.InfoBD(middlew.ValidacionJWT(routers.CrearRelacion))).Methods("POST")
 	router.HandleFunc("/borrarRelacion", middlew.InfoBD(middlew.ValidacionJWT(routers.EliminarRelacion))).Methods("DELETE")
 	router.HandleFunc("/existeRelacion", middlew.InfoBD(middlew.ValidacionJWT(routers.ComprobarRelacionNegocios))).Methods("GET")
+	router.HandleFunc("/obtenerNegocios", middlew.InfoBD(middlew.ValidacionJWT(routers.ListaNegocios))).Methods("GET")
 
 	//Miramos si tenemos un puerto
 	PORT := os.Getenv("PORT")
