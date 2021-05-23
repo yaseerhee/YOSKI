@@ -21,6 +21,7 @@ func InsertoPublicacion(t models.GuardoPublicacion) (string, bool, error) {
 	//cOGEMOS LA COLECCION NEGOCIO
 	col := db.Collection("publicacion")
 
+	// objeto de negocio
 	registro := bson.M{
 		"negocioId": t.NegocioID,
 		"mensaje":   t.Mensaje,
