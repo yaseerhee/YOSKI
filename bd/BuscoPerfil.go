@@ -10,6 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+//BuscoPerfil es
 func BuscoPerfil(ID string) (models.Negocio, error) {
 	contexto, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
