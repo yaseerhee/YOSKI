@@ -14,12 +14,14 @@ import (
 // Controladores sirve para crear mi puerto, el controlador y pongo a escuchar al servidor en el 8080
 func Controladores() {
 	router := mux.NewRouter()
-	// endPoints
+	// endPoints Negocio
 	router.HandleFunc("/registro", middlew.InfoBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/inicioSesion", middlew.InfoBD(routers.InicioSesion)).Methods("POST")
 	router.HandleFunc("/verPerfil", middlew.InfoBD(middlew.ValidacionJWT(routers.VerPerfil))).Methods("GET")
 	router.HandleFunc("/modificarPerfilNegocio", middlew.InfoBD(middlew.ValidacionJWT(routers.ModificarRegistro))).Methods("PUT")
+	// endPoints Publicacion
 
+	
 	//Miramos si tenemos un puerto
 	PORT := os.Getenv("PORT")
 	// Si no hay un puerto, vamos a forzar a que salga por el puerot 8080
