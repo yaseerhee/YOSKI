@@ -30,25 +30,24 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 	busca.SetLimit(20) // para paginarlo de 20 en 20
 	// ?i : es para que coja mayusculas como minusculas
 	consulta := bson.M{
-		"nombre": bson.M{
-			"$regex": `(?i)` + buscador,
-		},
+		"nombre": bson.M{"$regex": `(?i)` + buscador},
 	}
 	// Buscamos en la coleccion un grupo de registros que cumpla la condicion
 	tabla, err := col.Find(contexto, consulta, busca)
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println("Fallo aca" + err.Error())
 		return resultados, false
 	}
 
-	var encontrado, incluir bool
+	var encontrado bool
+	var incluir bool
 	// Recorremos la coleccion que cumple la condicion
 	for tabla.Next(contexto) {
 		var s models.Negocio
 		//grabamos en cada posicion de la tabla y lo guardamos en modelo negocio para obtener su info
 		err := tabla.Decode(&s)
 		if err != nil {
-			fmt.Println(err.Error())
+			fmt.Println("Tira fallo" + err.Error())
 			return resultados, false
 		}
 		var seguidores models.Relacion
@@ -59,7 +58,7 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 		// comprobamos si no lo encuentra lo añade
 		encontrado, err = ComprobarRelacionNegocios(seguidores)
 		if err != nil {
-			fmt.Println(err.Error())
+			fmt.Println("Test 4: Fallo viene de aqui" + err.Error())
 			return resultados, false
 		}
 		if tipo == "new" {
