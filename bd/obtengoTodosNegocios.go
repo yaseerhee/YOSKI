@@ -26,8 +26,8 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 	var resultados []*models.Negocio
 	// usamos el find para pasar varias condiciones
 	busca := options.Find()
-	busca.SetLimit(20) // para paginarlo de 20 en 20
 	busca.SetSkip((pagina - 1) * 20)
+	busca.SetLimit(20) // para paginarlo de 20 en 20
 	// ?i : es para que coja mayusculas como minusculas
 	consulta := bson.M{
 		"nombre": bson.M{

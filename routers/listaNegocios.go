@@ -16,13 +16,13 @@ func ListaNegocios(w http.ResponseWriter, r *http.Request) {
 	buscador := r.URL.Query().Get("buscador")
 
 	// PASAMOS LA INFO A ENTERO DE 64
-	pagtemp, err := strconv.Atoi(pagina)
+	pagTemp, err := strconv.Atoi(pagina)
 	if err != nil {
 		http.Error(w, "Debe poner una pagina mayor a 0", http.StatusBadRequest)
 		return
 	}
 	// tRANSFORMAMOS LA PAGINA A INT
-	paginacion := int64(pagtemp)
+	paginacion := int64(pagTemp)
 	// Ejecutamos nuestra consulta
 	resultado, estado := bd.ObtengoTodosNegocios(IDNegocio, paginacion, buscador, tipoNegocio)
 
