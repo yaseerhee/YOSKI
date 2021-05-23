@@ -29,6 +29,9 @@ func Controladores() {
 	router.HandleFunc("/obtenerAvatar", middlew.InfoBD(routers.ObtenerAvatar)).Methods("GET")
 	router.HandleFunc("/obtenerBanner", middlew.InfoBD(routers.ObtenerBanner)).Methods("GET")
 
+	//endPoints Relacion
+	router.HandleFunc("/crearRelacion", middlew.InfoBD(middlew.ValidacionJWT(routers.CrearRelacion))).Methods("POST")
+
 	//Miramos si tenemos un puerto
 	PORT := os.Getenv("PORT")
 	// Si no hay un puerto, vamos a forzar a que salga por el puerot 8080

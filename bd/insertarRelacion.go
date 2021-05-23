@@ -7,7 +7,7 @@ import (
 	"github.com/yaseerhee/YOSKI/models"
 )
 
-//InsertarRelacion guarda la relacion en la bd
+//InsertarRelacion guarda la relacion en la bd (AMIGOS SEGUIDOR)
 func InsertarRelacion(t models.Relacion) (bool, error) {
 	// Creamos un contexto. Traemos el contexto en Background de la bd, le agregamos un parametro que es el tiempo del TimeOut (15 seg)
 	contexto, cancel := context.WithTimeout(context.Background(), 15*time.Second)

@@ -7,7 +7,7 @@ import (
 	"github.com/yaseerhee/YOSKI/models"
 )
 
-//CrearRelacion crea un registro entre negocio y relacion
+//CrearRelacion crea un registro entre negocio y relacion (AMIGOS SEGUIDOR)
 func CrearRelacion(w http.ResponseWriter, r *http.Request) {
 	// OBTENEMOS EL ID
 	ID := r.URL.Query().Get("id")
