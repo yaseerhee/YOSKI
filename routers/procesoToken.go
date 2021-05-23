@@ -35,7 +35,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 	// una vez el token es valido tenemos que verificar que el negocio es valido
 	if err == nil {
 		_, encontrado, _ := bd.NegocioYaExiste(claims.Email)
-		if encontrado == true {
+		if encontrado {
 			// token valido y negocxio existe
 			Email = claims.Email
 			IDNegocio = claims.ID.Hex() //cONEVRTIMOS id EN sTRING
