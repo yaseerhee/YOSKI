@@ -24,13 +24,13 @@ func VeoPublicacionesSeguidores(ID string, pagina int) ([]models.DevuelvoPublica
 	consulta := make([]bson.M, 0)
 	// Voy a usar un FrameWork de MongoDB aggregate.
 	//El comando match se encarga de buscar la relacion del id con mi negocio
-	consulta = append(consulta, bson.M{"$match": bson.M{"negocioId": ID}})
+	consulta = append(consulta, bson.M{"$match": bson.M{"negocioid": ID}})
 	// El comando lookup nos ayuda a conectar las colecciones
 	consulta = append(consulta, bson.M{
 		"$lookup": bson.M{
 			"from":         "publicacion",
 			"localField":   "negociorelacionId",
-			"foreignField": "negocioid",
+			"foreignField": "negocioId",
 			"as":           "publica",
 		},
 	})
