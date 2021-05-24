@@ -11,7 +11,7 @@ import (
 // eS EL MODELO DE DATOS QUE RECIBIMOS DE UN APUBLICACION
 type DevuelvoPublicacionesSeguidores struct {
 	ID                primitive.ObjectID `bson:"_id" json:"_id,omitempty"`
-	NegocioID         string             `bson:"negocioId" json:"negocioId,omitempty"`
+	NegocioID         string             `bson:"negocioid" json:"negocioId,omitempty"`
 	NegocioRelacionID string             `bson:"negociorelacionId" json:"negocioRelationId,omitempty"`
 	Publicacion       struct {
 		Mensaje string    `bson:"mensaje" json:"mensaje,omitempty"`

@@ -29,8 +29,8 @@ func VeoPublicacionesSeguidores(ID string, pagina int) ([]models.DevuelvoPublica
 	consulta = append(consulta, bson.M{
 		"$lookup": bson.M{
 			"from":         "publicacion",
-			"localField":   "negociorelacionid",
-			"foreignField": "negocioId",
+			"localField":   "negociorelacionId",
+			"foreignField": "negocioid",
 			"as":           "publica",
 		},
 	})
