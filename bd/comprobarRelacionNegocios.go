@@ -27,12 +27,12 @@ func ComprobarRelacionNegocios(t models.Relacion) (bool, error) {
 	}
 	// objeto relacion
 	var resultado models.Relacion
-	//fmt.Println(resultado)
+	fmt.Println(resultado)
 	// buscamos en nuestra coleccion
 	err := col.FindOne(contexto, condicion).Decode(&resultado)
 	// si hay error
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println("Test 5: no coincide" + err.Error())
 		return false, err
 	}
 	// todo bien

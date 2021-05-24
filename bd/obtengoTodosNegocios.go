@@ -50,17 +50,15 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 			fmt.Println("Tira fallo" + err.Error())
 			return resultados, false
 		}
-		var seguidores models.Relacion
-		seguidores.NegocioID = ID
-		seguidores.NegocioRelacionID = s.ID.Hex() // dE CADA NEGOCIO EXTRAIGO EL ID
+
+		// ---------------Hasta aqui ningun fallo ---
+		var r models.Relacion
+		r.NegocioID = ID
+		r.NegocioRelacionID = s.ID.Hex() // dE CADA NEGOCIO EXTRAIGO EL ID
 		// sirve para saber si tenemos que incluir el usuario por defecto no
 		incluir = false
 		// comprobamos si no lo encuentra lo añade
-		encontrado, err = ComprobarRelacionNegocios(seguidores)
-		if err != nil {
-			fmt.Println("Test 4: Fallo viene de aqui" + err.Error())
-			return resultados, false
-		}
+		encontrado, _ = ComprobarRelacionNegocios(r)
 		if tipo == "new" {
 			if !encontrado {
 				incluir = true
@@ -73,7 +71,7 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 			}
 		}
 		// Para evitar seguirme a mi mismo
-		if seguidores.NegocioRelacionID == ID {
+		if r.NegocioRelacionID == ID {
 			incluir = false
 		}
 

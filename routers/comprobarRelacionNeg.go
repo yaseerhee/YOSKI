@@ -28,7 +28,7 @@ func ComprobarRelacionNegocios(w http.ResponseWriter, r *http.Request) {
 		resp.Estado = true
 	}
 	// todo okey
-	w.Header().Set("Content-type", "application/json")
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	//Enviamos la respuesta
 	json.NewEncoder(w).Encode(resp)
