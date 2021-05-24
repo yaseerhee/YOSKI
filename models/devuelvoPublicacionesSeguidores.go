@@ -6,8 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-
-
 // eS EL MODELO DE DATOS QUE RECIBIMOS DE UN APUBLICACION
 type DevuelvoPublicacionesSeguidores struct {
 	ID                primitive.ObjectID `bson:"_id" json:"_id,omitempty"`

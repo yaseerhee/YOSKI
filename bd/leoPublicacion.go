@@ -26,7 +26,7 @@ func LeoPublicacion(ID string, pagina int64) ([]*models.DevuelvoPublicacion, boo
 	var resultado []*models.DevuelvoPublicacion
 	// creamos la consulta
 	condicion := bson.M{
-		"negocioId": ID,
+		"companyId": ID,
 	}
 	// nos sirve para darle un comportamiento a nuestra consulta
 	opciones := options.Find()

@@ -30,7 +30,7 @@ func VeoPublicacionesSeguidores(ID string, pagina int) ([]models.DevuelvoPublica
 		"$lookup": bson.M{
 			"from":         "publicacion",
 			"localField":   "negociorelacionId",
-			"foreignField": "negocioId",
+			"foreignField": "companyId",
 			"as":           "publica",
 		},
 	})
