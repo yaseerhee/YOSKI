@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/yaseerhee/YOSKI/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
 )
 
 // Lista de negocios sirve para ver los negocios

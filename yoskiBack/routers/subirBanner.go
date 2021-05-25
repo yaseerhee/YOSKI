@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/yaseerhee/YOSKI/bd"
-	"github.com/yaseerhee/YOSKI/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 // Añade el Banner a nuestrop perfil

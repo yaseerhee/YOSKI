@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/yaseerhee/YOSKI/yoski-back/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 // BorrarRelacion dejar de seguir un usuario a otro

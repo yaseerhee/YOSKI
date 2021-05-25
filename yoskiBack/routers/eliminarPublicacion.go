@@ -2,7 +2,7 @@ package routers
 
 import (
 	"net/http"
-	"github.com/yaseerhee/YOSKI/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
 )
 
 func EliminarPublicacion(w http.ResponseWriter, r *http.Request){

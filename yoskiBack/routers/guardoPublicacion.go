@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/yaseerhee/YOSKI/bd"
-	"github.com/yaseerhee/YOSKI/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 // GuardoPublicacion permite guardar la publicacion en la BD

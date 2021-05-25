@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/yaseerhee/YOSKI/bd"
-	"github.com/yaseerhee/YOSKI/jwt"
-	"github.com/yaseerhee/YOSKI/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/jwt"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 // inicioSesion sirve para que el negocio pueda acceder a su cuenta

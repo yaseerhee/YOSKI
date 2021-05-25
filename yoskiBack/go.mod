@@ -1,4 +1,4 @@
-module github.com/yaseerhee/YOSKI
+module github.com/yaseerhee/YOSKI/yoskiBack
 
 go 1.12
 

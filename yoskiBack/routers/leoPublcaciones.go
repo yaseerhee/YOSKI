@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/yaseerhee/YOSKI/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
 )
 
 func LeoPublicaciones(w http.ResponseWriter, r *http.Request) {

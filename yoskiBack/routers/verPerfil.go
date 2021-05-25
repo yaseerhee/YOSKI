@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/yaseerhee/YOSKI/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
 )
 
 // VerPerfil permite coger los valores del Perfil

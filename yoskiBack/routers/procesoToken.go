@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/yaseerhee/YOSKI/bd"
-	"github.com/yaseerhee/YOSKI/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 //Valor del email que usamos en los endPOints

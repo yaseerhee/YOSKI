@@ -3,7 +3,7 @@ package middlew
 import (
 	"net/http"
 
-	"github.com/yaseerhee/YOSKI/yoski-back/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
 )
 
 //InfoBD me permite conocer el estado de la BD

@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/yaseerhee/YOSKI/yoski-back/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 //InsertarRelacion guarda la relacion en la bd (AMIGOS SEGUIDOR)

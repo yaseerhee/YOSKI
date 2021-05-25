@@ -7,8 +7,8 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
-	"github.com/yaseerhee/YOSKI/yoski-back/middlew"
-	"github.com/yaseerhee/YOSKI/yoski-back/routers"
+	"github.com/yaseerhee/YOSKI/yoskiBack/middlew"
+	"github.com/yaseerhee/YOSKI/yoskiBack/routers"
 )
 
 // Controladores sirve para crear mi puerto, el controlador y pongo a escuchar al servidor en el 8080

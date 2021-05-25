@@ -3,8 +3,8 @@ package routers
 import (
 	"net/http"
 
-	"github.com/yaseerhee/YOSKI/bd"
-	"github.com/yaseerhee/YOSKI/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 //CrearRelacion crea un registro entre negocio y relacion (AMIGOS SEGUIDOR)

@@ -1,7 +1,7 @@
 package bd
 
 import (
-	"github.com/yaseerhee/YOSKI/yoski-back/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 	"golang.org/x/crypto/bcrypt"
 )
 

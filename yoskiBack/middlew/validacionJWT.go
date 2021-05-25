@@ -3,7 +3,7 @@ package middlew
 import (
 	"net/http"
 
-	"github.com/yaseerhee/YOSKI/yoski-back/routers"
+	"github.com/yaseerhee/YOSKI/yoskiBack/routers"
 )
 
 // ValidacionJWT sirve para validar el token que nois viene en lqa peticion

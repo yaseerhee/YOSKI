@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/yaseerhee/YOSKI/bd"
+	"github.com/yaseerhee/YOSKI/yoskiBack/bd"
 )
 
 func ObtenerBanner(w http.ResponseWriter, r *http.Request) {

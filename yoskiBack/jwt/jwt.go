@@ -4,7 +4,7 @@ import (
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/yaseerhee/YOSKI/yoski-back/models"
+	"github.com/yaseerhee/YOSKI/yoskiBack/models"
 )
 
 // GeneroJWT genera el encriptado con JWT
