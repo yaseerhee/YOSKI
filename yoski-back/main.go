@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/yaseerhee/YOSKI/bd"
-	"github.com/yaseerhee/YOSKI/handlers"
+	"github.com/yaseerhee/YOSKI/yoski-back/bd"
+	"github.com/yaseerhee/YOSKI/yoski-back/handlers"
 )
 
 func main() {
