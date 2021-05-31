@@ -1,0 +1,29 @@
+
+// colores de la web
+$principal: #00B295;
+$principal-claro: #5CE1E6;
+$principal-gris: #8799a6;
+$principal-oscuro-claro:#192734;
+$principal-oscuro:#15212b;
+
+
+//Color de la fuente
+$fuente-principal: $principal;
+$fuente-clara: #fff;
+$fuente-gris:$principal-claro;
+$fuente-oscura: #000;
+
+// color borde
+$borde-principal: $principal;
+$borde-claro: #fff;
+$borde-gris: #38444d;
+$borde-oscuro: $principal-oscuro;
+
+
+//color del fondo
+$fondo-claro: #fff;
+$fondo-gris-oscuro: $principal-oscuro;
+$fondo-oscuro-claro:$principal-oscuro-claro;
+
+// color errores
+$error : #e0245e;
