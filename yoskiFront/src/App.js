@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AccesoUsuario from "./componentes/AccesoUsuario/AccesoUsuario";
+import AccesoUsuario from "./pagina/AccesoUsuario/AccesoUsuario";
 
 function App() {
   const [negocio, setNegocio] = useState({ nombre: "Yaser" });

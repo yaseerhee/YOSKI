@@ -1,0 +1,64 @@
+// importamos componentes
+import React, {useState} from 'react';
+import {Container, Row, Col, Button} from 'react-bootstrap';
+import VentanaForm from "../../componentes/VentanaAccesoUsuario/VentanaAccesoUsuario";
+import FormRegistro from "../../componentes/FormRegistro/FormRegistro";
+// importamos img
+import Fondo from "../../img/FondoInicioYoski.png";
+import Logo from "../../img/logo_yoski.png";
+// importamos estiilos
+import "./AccesoUsuario.scss";
+
+export default function AccesoUsuario(){
+    // Usamos estos estados para visualizar la ventana del formulario
+    const [mostrarVentana, setmostrarVentana] = useState(true);
+    const [contVentana, setContVentana] = useState(true);
+    // funcion que abre la ventana
+    const abrirVent = cont =>{
+        setmostrarVentana(true);
+        setContVentana(cont);
+    }
+        // Despliegue
+        return (
+            <>
+            <Container className="acceso-usuario" fluid>
+                <Row>
+                    <ComponentIzq />
+                    <ComponentDrch abrirVent={abrirVent} setmostrarVentana={setmostrarVentana} />
+                </Row>
+            </Container>
+            <VentanaForm show={mostrarVentana} setShow={setmostrarVentana}> 
+            {/* Ventana de registro  o inicio */}
+               {contVentana}
+            </VentanaForm>
+            </>
+        )
+}
+
+// Parte de la izquierda
+function ComponentIzq() {
+    return (
+        <Col className="acceso-usuario-izq" xs={6}>
+            <img src={Fondo} alt="Yoski" />
+            <div>
+            </div>
+        </Col>
+    );
+}
+
+// Parte de la derecha
+function ComponentDrch(props) {
+    // rECIBIMOS LOS ATRIBUTOSQUE VANA DAR LA FUNCIONALIDAD 
+    const {abrirVent, setmostrarVentana} = props;
+    return (
+        <Col className="acceso-usuario-drch" xs={6}>
+           <div>
+               <img src={Logo} alt="logo" />
+               <h2>Por un crecimiento de los pequeños negocios!</h2>
+               <h3>Vamos a ayudarnos! ~ YASER HADDAD</h3>
+               <Button onClick={() => {abrirVent(FormRegistro)}} variant="primary">Regístrate</Button>
+               <Button onClick={() => {abrirVent(<h2>Inicio de Sesión</h2>)}}variant="outline-light">Iniciar Sesión</Button>
+           </div>
+        </Col>
+    );
+}

@@ -19,7 +19,7 @@ code{
 .btn.btn-primary{
     background-color: $principal;
     border-color: $principal;
-    &:hover{
+    &:hover, &active, &focus{
         background-color: #2a9d8f ;
     }
 }
