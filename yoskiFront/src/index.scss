@@ -4,7 +4,7 @@ body{
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
-    background-color: $fondo-gris-oscuro;
+    background-color: $fondo-verde-claro;
     color: $fondo-claro;
 }
 
@@ -31,5 +31,21 @@ code{
     &:hover{
         background-color: $principal ;
         color: $fuente-clara;
+    }
+}
+
+
+// FORMULARIOS
+
+input.form-control, textarea.form-control{
+    background-color: $fondo-claro;
+    border-radius: 0;
+    border-bottom: 1px solid $borde-gris;
+    color: $fuente-clara !important;
+
+    &:focus{
+        background-color: $fondo-verde-claro;
+        box-shadow: none;
+        border-bottom: 1px solid $borde-principal;
     }
 }

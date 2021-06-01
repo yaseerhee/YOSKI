@@ -5,7 +5,7 @@ import VentanaForm from "../../componentes/VentanaAccesoUsuario/VentanaAccesoUsu
 import FormRegistro from "../../componentes/FormRegistro/FormRegistro";
 // importamos img
 import Fondo from "../../img/FondoInicioYoski.png";
-import Logo from "../../img/logo_yoski.png";
+import Logo from "../../img/logo_yoski_verde_claro.png";
 // importamos estiilos
 import "./AccesoUsuario.scss";
 
@@ -23,8 +23,8 @@ export default function AccesoUsuario(){
             <>
             <Container className="acceso-usuario" fluid>
                 <Row>
-                    <ComponentIzq />
-                    <ComponentDrch abrirVent={abrirVent} setmostrarVentana={setmostrarVentana} />
+                    <ComponentIzq abrirVent={abrirVent} setmostrarVentana={setmostrarVentana} />
+                    <ComponentDrch />
                 </Row>
             </Container>
             <VentanaForm show={mostrarVentana} setShow={setmostrarVentana}> 
@@ -36,9 +36,9 @@ export default function AccesoUsuario(){
 }
 
 // Parte de la izquierda
-function ComponentIzq() {
+function ComponentDrch() {
     return (
-        <Col className="acceso-usuario-izq" xs={6}>
+        <Col className="acceso-usuario-drch" xs={6}>
             <img src={Fondo} alt="Yoski" />
             <div>
             </div>
@@ -47,11 +47,11 @@ function ComponentIzq() {
 }
 
 // Parte de la derecha
-function ComponentDrch(props) {
+function ComponentIzq(props) {
     // rECIBIMOS LOS ATRIBUTOSQUE VANA DAR LA FUNCIONALIDAD 
     const {abrirVent, setmostrarVentana} = props;
     return (
-        <Col className="acceso-usuario-drch" xs={6}>
+        <Col className="acceso-usuario-izq" xs={6}>
            <div>
                <img src={Logo} alt="logo" />
                <h2>Por un crecimiento de los pequeños negocios!</h2>

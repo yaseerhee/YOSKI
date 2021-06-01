@@ -14,14 +14,14 @@ export default function FormRegistro(props) {
             <h2>Regístrate</h2>
             <Form onSubmit={onSubmit}>
                 <Form.Group>
-                    <Row>
-                        <Col>
-                            <Form.Control  type="text" placeholder="Nombre" />
-                        </Col>
-                        <Col>
-                            <Form.Control  type="text" placeholder="Apellidos" />
-                        </Col>
-                    </Row>
+                    <Col>
+                        <Form.Control  type="text" placeholder="Nombre" />
+                    </Col>
+                </Form.Group>
+                <Form.Group>
+                    <Col>
+                        <Form.Control  type="text" placeholder="Apellidos" />
+                    </Col>
                 </Form.Group>
                 <Form.Group>
                         <Form.Control  type="text" placeholder="Correo Electrónico" />

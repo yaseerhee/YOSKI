@@ -5,29 +5,6 @@
 
     // componente izquierda
     .acceso-usuario-izq{
-        overflow: hidden;
-        min-height: 100vh;
-        background-color: $principal-claro;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        // imagenes
-        img{
-            position:absolute;
-        }
-        // //titulo    
-        h2{
-            display: flex;
-            align-items: center;
-            font-size: 30px;
-            margin-bottom: 40px;
-            font-weight: bold;
-        }
-    }
-
-
-    // componenete derecha
-    .acceso-usuario-drch{
         display: flex;
         align-items: center;
         // primer div
@@ -64,6 +41,30 @@
                 margin-bottom: 10px;
             }
         }
+    
+
     }
 
+
+    // componenete derecha
+    .acceso-usuario-drch{
+        overflow: hidden;
+        min-height: 100vh;
+        background-color: $principal-claro;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // imagenes
+        img{
+            position:absolute;
+        }
+        // //titulo    
+        h2{
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+    }
 }
