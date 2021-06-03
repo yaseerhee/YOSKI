@@ -36,15 +36,16 @@ code{
 
 
 // FORMULARIOS
-
 input.form-control, textarea.form-control{
-    background-color: $fondo-claro;
-    border-radius: 0;
+    background-color: $fondo-verde-claro;
+    margin: 10px;
+    border-radius: 15px;
+    border: 0;
     border-bottom: 1px solid $borde-gris;
-    color: $fuente-clara !important;
+    color: $fuente-oscura !important;
 
     &:focus{
-        background-color: $fondo-verde-claro;
+        background-color: $fondo-claro;
         box-shadow: none;
         border-bottom: 1px solid $borde-principal;
     }

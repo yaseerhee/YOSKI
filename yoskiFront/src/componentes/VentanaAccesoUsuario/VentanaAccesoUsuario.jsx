@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from "react-bootstrap";
 // img
-import Logo from "../../img/logo_yoski_verde_claro.png";
+import Logo from "../../img/logo_yoski.png";
 
 // estilos
 import "./ventana.scss";

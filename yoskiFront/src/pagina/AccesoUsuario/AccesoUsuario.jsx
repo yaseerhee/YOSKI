@@ -11,8 +11,8 @@ import "./AccesoUsuario.scss";
 
 export default function AccesoUsuario(){
     // Usamos estos estados para visualizar la ventana del formulario
-    const [mostrarVentana, setmostrarVentana] = useState(true);
-    const [contVentana, setContVentana] = useState(true);
+    const [mostrarVentana, setmostrarVentana] = useState(false);
+    const [contVentana, setContVentana] = useState(false);
     // funcion que abre la ventana
     const abrirVent = cont =>{
         setmostrarVentana(true);
@@ -56,7 +56,7 @@ function ComponentIzq(props) {
                <img src={Logo} alt="logo" />
                <h2>Por un crecimiento de los pequeños negocios!</h2>
                <h3>Vamos a ayudarnos! ~ YASER HADDAD</h3>
-               <Button onClick={() => {abrirVent(FormRegistro)}} variant="primary">Regístrate</Button>
+               <Button onClick={() => {abrirVent(<FormRegistro setmostrarVentana={setmostrarVentana} />)}} variant="primary">Regístrate</Button>
                <Button onClick={() => {abrirVent(<h2>Inicio de Sesión</h2>)}}variant="outline-light">Iniciar Sesión</Button>
            </div>
         </Col>
