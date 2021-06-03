@@ -6,7 +6,9 @@ import { inicioSesionApi, setTokenApi } from "../../api/autentificacion";
 import "./FormInicio.scss";
 import {Form, Button, Spinner} from "react-bootstrap";
 
-export default function FormInicio() {
+export default function FormInicio(props) {
+    const {setCompSesion} = props;
+    // console.log(props);
     // estado de nuestro formulario (vacio)
     const [FormData, setFormData] = useState(recogerValorForm());
      //Va a aprecer mientras el usuario se esta registrando
@@ -25,7 +27,7 @@ export default function FormInicio() {
 
         console.log(validacion);
         if(size(FormData) !== validacion){
-            toast.warning("Rellan todos los campos!");
+            toast.warning("Rellena todos los campos!");
         }else{
             setLoading(true);
             inicioSesionApi(FormData).then(response => {
@@ -36,6 +38,8 @@ export default function FormInicio() {
                     //console.log(response.token);
                     // pasamos nuestro token a la funcion que lo alamcena en localstorage
                     setTokenApi(response.token);
+                    //Esto va a hacer que se vaya hasta app y actualice el estado y eso va ahacer que el useEffect se vuerlva  a ejecutar
+                    setCompSesion(true);
                 }
             }).catch(err => {
                 // Capturamos error de si no hay respuesta

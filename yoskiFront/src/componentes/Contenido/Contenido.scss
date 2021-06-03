@@ -1,0 +1,14 @@
+@import '../../scss/index.scss';
+
+.menu{
+    .contenido_menu{
+        padding-right: 0 !important;
+    }
+    // Para que haga scroll solo en nuestro contenido
+    .contenido{
+        height: 100vh;
+        overflow-y: scroll ;
+        padding: 0 !important;
+        border-right: 1px solid $borde-gris;
+    }
+}

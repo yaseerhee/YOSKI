@@ -1,5 +1,8 @@
 import { HOST, TOKEN } from "./variablesGlobales";
 
+//IMPORTAMOS DECODIFICADOR DE JWT
+import jwtDecode from "jwt-decode";
+
 // Nos ayud a registrar nuestro negocio
 export function registroApi(negocio) {
   // console.log(negocio);
@@ -88,4 +91,46 @@ export function inicioSesionApi(negocio) {
 //Se encarga de almacenar nuestra sesion en el localstorgae
 export function setTokenApi(token) {
   localStorage.setItem(TOKEN, token);
+}
+
+// sE ENCARGA DE OBTENER EL TOKKEN DE LOCALSTORAGE
+export function getTokenApi() {
+  return localStorage.getItem(TOKEN);
+}
+
+// se encarga de eliminar el token para salir del usuario
+export function cerrarSesionApi() {
+  localStorage.removeItem(TOKEN);
+}
+
+// Comprobar que el token no ha caducado
+export function tokenCaducadoApi(token) {
+  // obtenemos del json solo el exp para saber si ha caducado
+  const { exp } = jwtDecode(token);
+  const caducado = exp * 1000; //Transformamos a milisegundos par poder trabajar con Date
+  const timeout = caducado - Date.now(); // Si sale num neg ha expirado sino true
+
+  if (timeout < 0) {
+    return true;
+  }
+  return false;
+}
+
+// Miramos si tiene una sesion iniciada
+export function sesionIniciadaApi() {
+  const token = getTokenApi();
+
+  //Comprobamos que existe el token
+  if (!token) {
+    cerrarSesionApi();
+    return null;
+  }
+
+  //Comprobamos que el token no ha caducado (si es true ha caducado)
+  if (tokenCaducadoApi(token)) {
+    cerrarSesionApi();
+  }
+
+  // devolvemos el decodificado
+  return jwtDecode(token);
 }
