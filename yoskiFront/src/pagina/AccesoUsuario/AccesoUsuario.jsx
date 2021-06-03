@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import VentanaForm from "../../componentes/VentanaAccesoUsuario/VentanaAccesoUsuario";
 import FormRegistro from "../../componentes/FormRegistro/FormRegistro";
+import FormInicio from "../../componentes/FormInicio/FormInicio";
 // importamos img
 import Fondo from "../../img/FondoInicioYoski.png";
 import Logo from "../../img/logo_yoski_verde_claro.png";
@@ -57,7 +58,7 @@ function ComponentIzq(props) {
                <h2>Por un crecimiento de los pequeños negocios!</h2>
                <h3>Vamos a ayudarnos! ~ YASER HADDAD</h3>
                <Button onClick={() => {abrirVent(<FormRegistro setmostrarVentana={setmostrarVentana} />)}} variant="primary">Regístrate</Button>
-               <Button onClick={() => {abrirVent(<h2>Inicio de Sesión</h2>)}}variant="outline-light">Iniciar Sesión</Button>
+               <Button onClick={() => {abrirVent(<FormInicio />)}}variant="outline-light">Iniciar Sesión</Button>
            </div>
         </Col>
     );

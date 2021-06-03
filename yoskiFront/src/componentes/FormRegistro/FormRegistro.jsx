@@ -65,7 +65,7 @@ export default function FormRegistro(props) {
                 <Form.Group>
                     <Col>
                         {/* Si hay un cambio en el text del input actualizas el valor y lo envias a la funcion que recoge los valores y actualizas del Json el nombre, asi con el resto */}
-                        <Form.Control  type="text" name="nombre" placeholder="Nombre" value={FormData.nombre} onChange={e => setFormData({ ...FormData, nombre: e.target.value})}/>
+                        <Form.Control  type="text" name="nombre" placeholder="Nombre de Negocio" value={FormData.nombre} onChange={e => setFormData({ ...FormData, nombre: e.target.value})}/>
                     </Col>
                     <Col>
                         <Form.Control  type="text" name="industria" placeholder="Industria" value={FormData.industria} onChange={e => setFormData({ ...FormData, industria: e.target.value})}/>
