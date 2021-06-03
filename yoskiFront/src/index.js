@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+// estilos toastify
+import 'react-toastify/dist/ReactToastify.css';
+// bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
+// sass
 import "./index.scss";
 
 ReactDOM.render(<App />, document.getElementById("root"));

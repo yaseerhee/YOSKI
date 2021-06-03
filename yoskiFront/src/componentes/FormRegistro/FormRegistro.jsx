@@ -1,15 +1,42 @@
 import React, {useState} from 'react'
-import { Row, Col, Form, Button, Spinner} from "react-bootstrap";
+import { Col, Form, Button, Spinner} from "react-bootstrap";
+//importamos paquetes de validacion
+import { values, size} from 'lodash';
+import {toast} from 'react-toastify';
 // estilos
 import "./formRegistro.scss";
 export default function FormRegistro(props) {
     const { setmostrarVentana} = props;
     const [FormData, setFormData] = useState(recogerValorForm());
+    //Va a aprecer mientras el usuario se esta registrando
+    const [loading, setLoading] = useState(false);
     // inicializamos a falso
     const onSubmit = (e) => {
         e.preventDefault();
-        setmostrarVentana(false);
         console.log(FormData);
+        // Para comprobar que todos estan validados. Si todos = 5
+        let validacion = 0;
+        // Esto hace un bucle que comprueba cada valor de nuestro JSON, esto quiere decir que si llenamos menos de 5 va a devolver el toastify
+        values(FormData).some(value => {
+            value && validacion++
+            return null;    
+        });
+        // console.log(validacion); Prueba
+        if(validacion !== 5){
+            //Paquete que muestra alert
+            toast.warning("Completa todos los campos del registro");
+        }else{
+            // Comprobamos contraseñas identicas
+            if(FormData.password !== FormData.repPassword){
+                toast.warning("Contraseñas distintas! ");
+            }else if(size(FormData.password < 6)){
+                //Comprobamos contraseña mayor de 6 caracteres
+                toast.warning("La contraseña es insegura, prueba a poner más de 6 caracteres! ");
+            }else{
+                setLoading(true);
+                toast.success("Registro exitoso.");
+            }
+        }
     }
     return (
         <div className="form-reg">
@@ -33,7 +60,10 @@ export default function FormRegistro(props) {
                         <Form.Control  type="password"name="repPassword" placeholder="Repetir Contraseña" value={FormData.repPassword} onChange={e => setFormData({ ...FormData, repPassword: e.target.value})}/>
                     </Col>
                 </Form.Group>
-                <Button variant="primary" type="submit">Registrarse</Button>
+                <Button variant="primary" type="submit">
+                    {/* Si no hay un loading muestra Registrarse en caso de que este procesando datos muestra la ruedecita */}
+                    { !loading ? "Registrarse" : <Spinner animation="border" />}
+                    </Button>
             </Form>
         </div>
     )
