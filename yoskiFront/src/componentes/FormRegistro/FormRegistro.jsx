@@ -24,7 +24,7 @@ export default function FormRegistro(props) {
                         <Form.Control  type="text" name="industria" placeholder="Industria" value={FormData.industria} onChange={e => setFormData({ ...FormData, industria: e.target.value})}/>
                     </Col>
                     <Col>
-                    <Form.Control  type="text" name="email" placeholder="Correo Electrónico" value={FormData.email} onChange={e => setFormData({ ...FormData, email: e.target.value})}/>
+                    <Form.Control  type="email" name="email" placeholder="Correo Electrónico" value={FormData.email} onChange={e => setFormData({ ...FormData, email: e.target.value})}/>
                     </Col>
                     <Col>
                         <Form.Control  type="password" name="password" placeholder="Contraseña" value={FormData.password} onChange={e => setFormData({ ...FormData, password: e.target.value})}/>
