@@ -3,6 +3,7 @@ import { Col, Form, Button, Spinner} from "react-bootstrap";
 //importamos paquetes de validacion
 import { values, size} from 'lodash';
 import {toast} from 'react-toastify';
+import {registroApi} from "../../api/autentificacion";
 // estilos
 import "./formRegistro.scss";
 export default function FormRegistro(props) {
@@ -34,7 +35,26 @@ export default function FormRegistro(props) {
                 toast.warning("La contraseña es insegura, prueba a poner más de 6 caracteres! ");
             }else{
                 setLoading(true);
-                toast.success("Registro exitoso.");
+                // Enviamos los datos a nuestro autentificador
+                registroApi(FormData).then(response => {
+                    if(response.code){
+                        //Significa que nos ha dado error
+                        toast.warning(response.message);
+                    }else{
+                        toast.success("Registro exitoso.");
+                        // Cerramos ventana
+                        setmostrarVentana(false);
+                        // borramos los campos del form
+                        setFormData(recogerValorForm);
+
+                    }
+                }).catch(err => {
+                    // Capturamos error de si no hay respuesta
+                    toast.error("Prueba más tarde. Fallo del servidor");
+                }).finally(()=>{
+                    //Paramos nuestro spinner porque ya habra terminado de registrar o de fallar
+                    setLoading(false);
+                });
             }
         }
     }
