@@ -1,3 +1,15 @@
 @import "../../scss/index.scss";
 
-.negocio{}
+.negocio{
+
+    .negocio-titulo{
+        border-bottom: 1px solid $borde-gris;
+        padding:15ps;
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+    }
+}
