@@ -1,0 +1,49 @@
+@import "../../../scss/index.scss";
+
+.info-negocio{
+    margin: 20px;
+
+    *{
+        margin:0;
+    }
+
+    .icons{
+        width:20px;
+        height: 20px;
+        fill: $fuente-gris ;
+    }
+
+    .name{
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .email{
+        font-size: 14px;
+        color: $fuente-gris;
+    }
+
+    .descripcion{
+        margin: 10px 0;
+        white-space: pre-line ; // para que cuando pongamos intros los pinte
+    }
+
+    .mas-info{
+        display: flex;
+        align-items: center;
+
+        p, a{
+            color: $fuente-gris;
+            padding-right: 20px ;
+
+
+            .icons{
+                margin-right: 10px;
+            }
+        }
+
+        a{
+            color:$principal;
+        }
+    }
+}
