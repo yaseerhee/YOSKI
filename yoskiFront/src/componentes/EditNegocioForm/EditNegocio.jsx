@@ -1,47 +1,128 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {Form, Button, Row, Col} from "react-bootstrap";
-
+import {HOST} from "../../api/variablesGlobales";
+import {toast} from "react-toastify";
+// importamos icono
+//import Banner from "../../img/imagen.svg";
+//Ficheros subir
+import {useDropzone} from "react-dropzone";
 // Añadimos la s libreria s para calendario en español
 import DatePicker from 'react-datepicker';
 import es from "date-fns/locale/es";
 import "./EditNegocio.scss";
+// Funciones que se conectan al Backend
+import {subirBannerApi, subirAvatarApi} from "../../api/negocio";
+
+
 
 export default function EditNegocio(props) {
+    //rECOGEMOS NUESTRA VENTANA
     const {negocio, setAbrirModal} = props;
     // Recogemos los valores de nuestro negocio
-    const [FormData, setFormData] = useState(validarValores(negocio));
+    const [formData, setFormData] = useState(validarValores(negocio));
+// -------------------BANNER 
+    // rECOGEMOS ESTADO FICHERIO
+    const [bannerURL, setbannerURL] = useState(
+        negocio?.banner ? `${HOST}/obtenerBanner?id=${negocio.id}` : null
+    );
+    // Creamos este estado para enviarselo al servidor
+    const [bannerFile, setbannerFile] = useState(null);
+
+    // Variable donde guardamos el fichero
+    const onDropBanner = useCallback(archivo => {
+        console.log(archivo);
+        const file = archivo[0];
+        setbannerURL(URL.createObjectURL(file));
+        setbannerFile(file);
+    });
+
+    //Configuracion de los fichero que aceptamos // Esto sirve para dar las propiedades apropiadas a un div y a un input
+    // : damos alias para no equivocarlo con los del avatar
+    const {getRootProps: getRootBannerProps, getInputProps: getInputBannerProps} = useDropzone({
+        accept: "image/jpeg, image/png",
+        noKeyboard: true,
+        multiple: false,
+        onDrop: onDropBanner //Le pasamos el fichero a nuestra variable
+    });
+// -----------------avatar
+// rECOGEMOS ESTADO FICHERIO
+    const [avatarURL, setAvatarURL] = useState(
+    negocio?.avatar ? `${HOST}/obtenerAvatar?id=${negocio.id}` : null
+);
+// Creamos este estado para enviarselo al servidor
+    const [avatarFile, setAvatarFile] = useState(null);
+
+    
+    // Variable donde guardamos el fichero
+    const onDropAvatar = useCallback(archivo => {
+        console.log(archivo);
+        const file = archivo[0];
+        setAvatarURL(URL.createObjectURL(file));
+        setAvatarFile(file);
+    });
+    
+    //Configuracion de los fichero que aceptamos // Esto sirve para dar las propiedades apropiadas a un div y a un input
+   // : damos alias para no equivocarlo con los del avatar
+   const {getRootProps: getRootAvatarProps, getInputProps: getInputAvatarProps} = useDropzone({
+       accept: "image/jpeg, image/png",
+       noKeyboard: true,
+       multiple: false,
+       onDrop: onDropAvatar //Le pasamos el fichero a nuestra variable
+   });
+
+// / --------------- datos negocio
+const modificarValoresNegocio = (e) => {
+    // Esto va asignar el valor de cada target al name
+    setFormData({...formData, [ e.target.name]: e.target.value,})
+}
     // console.log(negocio);
     const modificoInfo = e =>{
         e.preventDefault();
-        console.log(FormData);
+        if(bannerFile){
+            subirBannerApi(bannerFile).catch(() => {
+                toast.error("Fallo al cambiar el Banner");
+            });
+        }
+        if(avatarFile){
+            subirAvatarApi(avatarFile).catch(() => {
+                toast.error("Fallo al cambiar el Avatar");
+            });
+        }
     }
 
-    const modificarValoresNegocio = (e) => {
-        // Esto va asignar el valor de cada target al name
-        setFormData({...FormData, [ e.target.name]: e.target.value,})
-    }
 
     return (
         <div className="edit-neg">
+            {/* Le pasamos el root y el input en alias */}
+            <div className="banner"   style={{backgroundImage: `url('${bannerURL}')`}} {...getRootBannerProps()}>
+                <input {...getInputBannerProps()} />
+                {/* <img alt="camara" className="iconos" src={Banner} /> */}
+            </div>
+            <div className="avatar"   style={{backgroundImage: `url('${avatarURL}')`}} {...getRootAvatarProps()}>
+                <input {...getInputAvatarProps()} />
+                {/* <img alt="camara" className="iconos" src={Banner} /> */}
+            </div>
+
+
             <Form onSubmit={modificoInfo}>
                 <Form.Group>
                     <Row>
                         <Col>
-                            <Form.Control type="text" placeholder="Nombre de la Empresa" name="nombre" defaultValue={FormData.nombre} onChange={modificarValoresNegocio}/>
+                            <Form.Control type="text" placeholder="Nombre de la Empresa" name="nombre" defaultValue={formData.nombre} onChange={modificarValoresNegocio}/>
                         </Col>
                         <Col>
-                            <Form.Control type="text" placeholder="Industria" name="industria" defaultValue={FormData.industria} onChange={modificarValoresNegocio}/>
+                            <Form.Control type="text" placeholder="Industria" name="industria" defaultValue={formData.industria} onChange={modificarValoresNegocio}/>
                         </Col>
                     </Row>
                 </Form.Group>
                 <Form.Group>
-                        <Form.Control as="textarea" placeholder="Descripción" name="biografia" type="text" row="5" defaultValue={FormData.biografia} onChange={modificarValoresNegocio}/>
+                        <Form.Control as="textarea" placeholder="Descripción" name="biografia" type="text" row="5" defaultValue={formData.biografia} onChange={modificarValoresNegocio}/>
                 </Form.Group>
                 <Form.Group>
-                        <Form.Control placeholder="Sitio Web" name="sitioweb" type="text" defaultValue={FormData.sitioweb} onChange={modificarValoresNegocio}/>
+                        <Form.Control placeholder="Sitio Web" name="sitioweb" type="text" defaultValue={formData.sitioweb} onChange={modificarValoresNegocio}/>
                 </Form.Group>
                 <Form.Group>
-                        <DatePicker placeholder="Fecha de Creación" name="fechaCreacion" locale={es} selected={new Date(FormData.fechaCreacion)} onChange={date => setFormData({...FormData, fechaCreacion: date})}/>
+                        <DatePicker placeholder="Fecha de Creación" name="fechaCreacion" locale={es} selected={new Date(formData.fechaCreacion)} onChange={date => setFormData({...formData, fechaCreacion: date})}/>
                 </Form.Group>
                 <Button className="btn-submit" variant="primary" type="submit">Actualizar</Button>
             </Form>
