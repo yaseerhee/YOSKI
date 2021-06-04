@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // estilos toastify
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 // bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 // sass
 import "./index.scss";
+// estilos datepicker
+import "react-datepicker/dist/react-datepicker.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
