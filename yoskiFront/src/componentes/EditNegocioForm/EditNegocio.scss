@@ -1,0 +1,19 @@
+@import "../../scss/index.scss";
+
+.edit-neg{
+    form{
+        padding: 0 20px 20px 20px;
+
+        .btn-submit{
+            position: absolute;
+            top: -50px;
+            right: 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            padding: 4px 15px 6px 15px ;
+        }
+    }
+
+
+
+}

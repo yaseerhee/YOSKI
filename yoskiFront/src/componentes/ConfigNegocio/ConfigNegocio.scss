@@ -1,1 +1,41 @@
 @import '../../scss/index.scss';
+
+.config-neg{
+    .modal-content{
+        background-color: $fondo-verde-claro;
+        border-radius: 15px;
+        overflow: hidden;
+
+        .modal-header{
+            border-bottom: 2px solid $borde-oscuro;
+
+            .modal-title{
+                display: flex;
+                align-items: center;
+
+                .icons{
+                    width: 20px;
+                    height: 20px;
+                    fill: $principal;
+                    margin-left: 20px;
+                    margin-right: 10px;
+
+                    &:hover{
+                        cursor: pointer; //para que salga la manita en la x
+                    }
+                }
+
+                h2{
+                    font-size: 20px;
+                    margin: 0;
+
+                }
+            }
+        }
+
+        .modal-body{
+            padding: 0;
+        }
+    }
+
+}
