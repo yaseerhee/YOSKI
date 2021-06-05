@@ -10,11 +10,13 @@ import {mostrarNegociosApi} from  "../../api/seguidores";
 import "./Negocios.scss";
 
 function Negocios(props) {
-    const {location} = props;
+    const {location, history} = props;
     const [negocios, setNegocios] = useState(null);
     const params = negocioUrl(location);
+    //Identifica entre news y follow
+    const [tipo, setTipo] = useState(params.tipo || "follow"); //En caso de que el tipo no tenga valor, mostramos el siguiendo
     // console.log(params);
-    // console.log(props);
+    console.log(props);
     useEffect(() => {
         //follow o new
         // Le pasamo sla url en formato string
@@ -29,9 +31,25 @@ function Negocios(props) {
             }
         }).catch(err => {
             setNegocios([]);
-        })
-    }, [])
-    const {} = props;
+        });
+
+        // Cuando location cambie vuelkve a ejecutar
+    }, [location]);
+    const cambioTipo = (tipo) =>{
+        // boramos los negocios para volver a caragr los nuevos
+        setNegocios(null);
+        if(tipo === "new"){
+            // Adjudicamos
+            setTipo("new");
+        }else{
+            // Adjudicamos
+            setTipo("follow");
+        }
+
+        history.push(
+           { search: queryString.stringify({tipo: tipo, pagina:1, buscando: "",})}
+        )
+    }
     return (
             <Contenido className="negocios-todos" title="Negocios" >
                 <div className="negocios-title">   
@@ -39,8 +57,9 @@ function Negocios(props) {
                         <input type="text" placeholder="Busca la empresa" />
                 </div>
                 <ButtonGroup className="opciones">
-                    <Button>Sigo</Button>
-                    <Button>No Sigo</Button>
+                    {/* Para que al pinchar en cada boton se nos filtren */}
+                    <Button onClick={() => cambioTipo("follow")}>Sigo</Button>
+                    <Button onClick={() => cambioTipo("new")}>No Sigo</Button>
                 </ButtonGroup>
                 {!negocios ? (
                 <div className="neg-loading">
