@@ -50,6 +50,7 @@ export function obtenerPublicacionNegocioApi(idNegocio, pagina) {
 
   return fetch(url, params)
     .then((response) => {
+      // console.log("Api: " + response.json());
       return response.json();
     })
     .catch((err) => {

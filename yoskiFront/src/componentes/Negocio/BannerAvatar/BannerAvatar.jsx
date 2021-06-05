@@ -15,7 +15,7 @@ export default function BannerAvatar(props) {
     // Si negocio tiene contenido me devuelves el banner /ENDPOINT si no no me devuelves nada
     const bannerUrl = negocio?.banner ? `${HOST}/obtenerBanner?id=${negocio.id}` : null;
     const avatarUrl = negocio?.avatar ? `${HOST}/obtenerAvatar?id=${negocio.id}` : Avatar;
-    console.log(negocioActual);
+    //console.log(negocioActual);
     // estado que nos dice si seguimos o no seguimos a otro usuario
     const [siguiendo, setSiguiendo] = useState(null);
     //Para que se muestre el estado de la relacion en tiempo real
@@ -25,7 +25,7 @@ export default function BannerAvatar(props) {
         // EN CASO DE QUE EXISTE EL UNEGOCIO EJECUTAME ESTO SINO NAFDA
       if(negocio){
         existeRelacionApi(negocio?.id).then(response => {
-          console.log(response);
+          //console.log(response);
           if(response?.estado){
             setSiguiendo(true);
           }else
