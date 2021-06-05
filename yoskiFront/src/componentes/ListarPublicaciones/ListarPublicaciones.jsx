@@ -35,7 +35,7 @@ function Publicacion(props){
     // console.log(avatarUrl);
     useEffect(() => {
        getNegocioApi(publicacion.negocioId).then((response) => {
-           console.log(response);
+           //console.log(response);
            setnegocioInfo(response);
            setavatarUrl(response?.avatar ? `${HOST}/obtenerAvatar?id=${response.id}` : SinAvatar);
        })
