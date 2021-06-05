@@ -38,7 +38,7 @@ export default function Menu() {
             <Link to={`/${negocio?._id}`}> {/* la interrogacion aydua a que si el parametro no existe lo obvie */}
                 <img className="icons" src={Perfil} alt="perfil"/> Perfil
             </Link>
-            <Link to="/negocio">
+            <Link to="/negocios">
                 <img className="icons" src={Negocio} alt="negocios"/> Negocios
             </Link>
             <Link to="" onClick={cerrarSesion}>

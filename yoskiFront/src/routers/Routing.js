@@ -9,6 +9,7 @@ export default function Routing() {
   return (
     // Para envolver la app
     <Router>
+      {/* Sirve para que nos encuentre una pagina y la muestre qpoirque sino nos muestra varias */}
       <Switch>
         {/* Hacemos un bucle para recorrer nuestro fichero de configuracio */}
         {map(configRouting, (route, i) => (

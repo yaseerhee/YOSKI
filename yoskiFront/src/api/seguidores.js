@@ -83,3 +83,30 @@ export function dejarSeguirNegocioApi(idNegocio) {
       return err;
     });
 }
+
+// Motrar negocios
+export function mostrarNegociosApi(paramsUrl) {
+  //Ponemos el endPoint al que consultaremos los datos
+  const url = `${HOST}/obtenerNegocios?${paramsUrl}`;
+  // Parametros
+  const params = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${getTokenApi()}`,
+    },
+  };
+
+  // Hacemos la peticionç
+  return fetch(url, params)
+    .then((response) => {
+      // si devuelve 400, 401, etc..
+      // if (response.status >= 400) throw null;
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err;
+    });
+}

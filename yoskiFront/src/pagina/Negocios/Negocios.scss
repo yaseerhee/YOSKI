@@ -1,3 +1,62 @@
 @import "../../scss/index.scss";
 
-.negocios{}
+.negocios-todos{
+    negocios-title{
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h2{
+            font-size: 22px;
+            margin-bottom: 0;
+            font-weight:bold;
+        }
+
+        input {
+            width: 50%;
+            border-radius: 15px;
+
+            border: 0;
+            background-color: $fondo-oscuro-claro;
+            padding: 5px 20px;
+            color: $fuente-oscura;
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+    }
+    .opciones{
+        display: flex !important;
+        .btn.btn-primary{
+            background-color: transparent !important;
+            font-weight: bold;
+            border: 0;
+            border-bottom: 1px solid $principal-gris;
+            padding: 15px 0;
+            border-radius: 10px;
+
+            &:hover{
+                background-color: $principal !important;
+            }
+
+            &.active{
+                border-bottom: 3px solid  $principal-gris;
+            }
+        }
+    }
+
+    .neg-loading{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 50px;
+
+        > div{
+            margin-bottom: 10px;
+        }
+    }
+}
