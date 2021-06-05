@@ -10,14 +10,13 @@ import (
 
 // veo publicaciones de todos los seguidores
 func VeoPublicacionesRelacionadas(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Query().Get("pagina")
 	// revisamos que se pone un valor
-	if len(p) < 1 {
+	if len(r.URL.Query().Get("pagina")) < 1 {
 		http.Error(w, "Debe pasar el numero de la pagina", http.StatusBadRequest)
 		return
 	}
 	// transformamos el entero a string
-	pagina, err := strconv.Atoi(p)
+	pagina, err := strconv.Atoi(r.URL.Query().Get("pagina"))
 	if err != nil {
 		http.Error(w, "Debe ser un número mayor que cero", http.StatusBadRequest)
 		return

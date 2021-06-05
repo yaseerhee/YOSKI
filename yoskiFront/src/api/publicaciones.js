@@ -59,3 +59,29 @@ export function obtenerPublicacionNegocioApi(idNegocio, pagina) {
 }
 
 
+// Obteenr las publicaciones de los eguidores
+export function obtenerPublicacionSeguidoresApi(pagina = 1) {
+  //Ponemos el endPoint al que consultaremos los datos
+  const url = `${HOST}/leoPublicacionesSeguidores?pagina=${pagina}`;
+  // Parametros
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${getTokenApi()}`,
+    },
+  };
+
+  // Hacemos la peticionç
+
+  return fetch(url, params)
+    .then((response) => {
+      // console.log("Api: " + response.json());
+      return response.json();
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+
