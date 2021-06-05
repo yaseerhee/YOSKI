@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Image} from "react-bootstrap";
 import {map} from"lodash";
+import moment from "moment";
 
 import {getNegocioApi} from "../../api/negocio";
 import SinAvatar from "../../img/perfil-by-default.png";
@@ -31,17 +32,30 @@ function Publicacion(props){
     // Guardamos la info del avatar
     const [avatarUrl, setavatarUrl] = useState(null);
     const {publicacion } = props;
-    console.log(avatarUrl);
+    // console.log(avatarUrl);
     useEffect(() => {
        getNegocioApi(publicacion.negocioId).then((response) => {
            console.log(response);
            setnegocioInfo(response);
-           setavatarUrl(response?.avatar ? `${HOST}/obtenerAvatar?id=${response.id}` : <img src={SinAvatar} alt="no-avatar"className="iconos" />)
+           setavatarUrl(response?.avatar ? `${HOST}/obtenerAvatar?id=${response.id}` : SinAvatar);
        })
         // siempre que sea una publicacion distinta se ejecuta
     }, [publicacion])
     // Obtenemos cad apublicacion denuestra bd
     // mostramos la publicaciones para asegurarme
     // console.log(props);
-    return <h2>{publicacion.mensaje}</h2>
+    return (
+        <div className="publicacion">
+            <Image className="avatar" src={avatarUrl} roundedCircle />
+            <div>
+                <div className="name">
+                    {negocioInfo?.nombre}
+                    <span>{moment(publicacion.fecha).calendar()}</span>
+                </div>
+                <div>
+                    {publicacion.mensaje}
+                </div>
+            </div>
+        </div>
+    )
 }

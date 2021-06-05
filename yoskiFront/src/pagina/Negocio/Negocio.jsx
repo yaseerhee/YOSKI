@@ -48,6 +48,29 @@ function Negocio(props) {
            console.log("Nada");
        });
     }, [match.params])
+
+    //Para ver mas publicaciones
+    const [paginacion, setpaginacion] = useState(1);
+    const [loadingPublicacion, setloadingPublicacion] = useState(false);
+    const masPublicaciones = () => {
+        const paginaActual = paginacion+1;
+        // Caragmos nueva pagina
+        setloadingPublicacion(true);
+        // pedimos a la peticion que nos envie la siguiente pagina
+        obtenerPublicacionNegocioApi(match.params.id, paginaActual).then(response => {
+            if(!response){
+                // CASODE QUE NO HAY RESPUESTA DEVOLVEMOS LA PAGINA ACTUAL Y EL CERO QUITA EL BOTON
+                setloadingPublicacion(0);
+            }else{
+                // mantenemos las publicaciones anterirores y traemos las nuevas
+                setPublicaciones([...publicaciones, ...response]);
+                // paginamos
+                setpaginacion(paginaActual);
+                // quitamos el loading ya que esta todo cargado
+                setloadingPublicacion(false);
+            }
+        });
+    }
     return (
         <Contenido className="negocio">
            <div className="negocio-titulo">
@@ -59,6 +82,9 @@ function Negocio(props) {
                <h3>Publicaciones</h3>
                {/* Si el negocio tiene publicaciones las muestra y sino  */}
                {publicaciones && <ListarPublicaciones publicaciones={publicaciones} />}
+               <Button onClick={masPublicaciones}>{!loadingPublicacion ? (loadingPublicacion !== 0 && 'Ver más...'): (
+                   <Spinner as="span" animation="grow" size="sm" role="status" arian-hidden="true"/>
+               )}</Button>
            </div>
         </Contenido>
     )

@@ -10,6 +10,11 @@ export default [
     page: Negocio,
   },
   {
+    path: "/negocios",
+    exact: true,
+    page: Negocios,
+  },
+  {
     path: "/",
     exact: true,
     page: Home,

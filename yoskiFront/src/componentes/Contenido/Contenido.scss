@@ -4,10 +4,11 @@
     .contenido_menu{
         padding-right: 0 !important;
         border-right: 1px solid $borde-gris;
+        height: 100%;
     }
     // Para que haga scroll solo en nuestro contenido
     .contenido{
-        height: 100vh;
+        height: 100%;
         overflow-y: scroll ;
         padding: 0 !important;
         border-right: 1px solid $borde-gris;

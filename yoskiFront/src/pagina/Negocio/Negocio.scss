@@ -4,7 +4,7 @@
     color: $fuente-oscura;
     .negocio-titulo{
         border-bottom: 1px solid $borde-gris;
-        padding:15ps;
+        padding:15px;
 
         h2 {
             font-size: 22px;
@@ -18,7 +18,22 @@
         h3{
             padding: 15px ;
             font-size: 18px;
+            font-weight: bold;
             border-bottom: 1px solid $borde-gris;
+        }
+
+        > .btn.btn-primary{
+            display: flex;
+            margin: 0 auto;
+            margin-top:10px ;
+            margin-bottom:10px ;
+            background-color: transparent;
+            border: 0;
+
+            &:hover, &focus {
+                background-color: transparent !important;
+                color: $principal;
+            }
         }
     }
 }

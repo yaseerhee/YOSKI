@@ -1,4 +1,27 @@
 @import "../../scss/index.scss";
 
 
-.list-publicaciones{}
+.list-publicaciones{
+    .publicacion {
+        display: flex;
+        padding: 10px 20px;
+        border-bottom: 1px solid $borde-gris;
+
+        .avatar{
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        div > .name{
+            font-weight: bold;
+        }
+
+        div > span {
+            margin-left:  10px;
+            font-size: 12px;
+            font-weight: normal;
+            color: $fuente-gris;
+        }
+    }
+}
