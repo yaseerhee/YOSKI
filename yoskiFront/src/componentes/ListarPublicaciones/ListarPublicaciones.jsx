@@ -2,6 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {Image} from "react-bootstrap";
 import {map} from"lodash";
 
+import {getNegocioApi} from "../../api/negocio";
+import SinAvatar from "../../img/perfil-by-default.png";
+import {HOST} from "../../api/variablesGlobales";
+
+
 import "./ListarPublicaciones.scss";
 
 export default function ListarPublicaciones(props) {
@@ -21,7 +26,22 @@ export default function ListarPublicaciones(props) {
 
 
 function Publicacion(props){
+    // Guardamos en un estado la info del negocio
+    const [negocioInfo, setnegocioInfo] = useState(null);
+    // Guardamos la info del avatar
+    const [avatarUrl, setavatarUrl] = useState(null);
     const {publicacion } = props;
-    console.log(props);
+    console.log(avatarUrl);
+    useEffect(() => {
+       getNegocioApi(publicacion.negocioId).then((response) => {
+           console.log(response);
+           setnegocioInfo(response);
+           setavatarUrl(response?.avatar ? `${HOST}/obtenerAvatar?id=${response.id}` : <img src={SinAvatar} alt="no-avatar"className="iconos" />)
+       })
+        // siempre que sea una publicacion distinta se ejecuta
+    }, [publicacion])
+    // Obtenemos cad apublicacion denuestra bd
+    // mostramos la publicaciones para asegurarme
+    // console.log(props);
     return <h2>{publicacion.mensaje}</h2>
 }

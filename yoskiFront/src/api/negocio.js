@@ -1,6 +1,7 @@
 import { HOST } from "./variablesGlobales";
 import { getTokenApi } from "./autentificacion";
 
+//Devuelve el negocio actual
 export function getNegocioApi(id) {
   //Ponemos el endPoint al que consultaremos los datos
   const url = `${HOST}/verPerfil?id=${id}`;
@@ -15,7 +16,7 @@ export function getNegocioApi(id) {
   return fetch(url, params)
     .then((response) => {
       // si devuelve 400, 401, etc..
-      if (response.status >= 400) throw null;
+      if (response.status >= 400){throw null;} 
       return response.json();
     })
     .then((result) => {

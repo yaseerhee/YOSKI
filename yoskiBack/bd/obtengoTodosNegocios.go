@@ -77,6 +77,7 @@ func ObtengoTodosNegocios(ID string, pagina int64, buscador string, tipo string)
 
 		if incluir {
 			// Campos que no quiero que muestre los blanqueo
+			
 			s.Password = ""
 			s.Biografia = ""
 			s.SitioWeb = ""
