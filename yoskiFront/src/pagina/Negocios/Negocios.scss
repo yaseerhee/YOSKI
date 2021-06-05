@@ -59,4 +59,18 @@
             margin-bottom: 10px;
         }
     }
+
+    .mas-negocios.btn.btn-primary{
+        display: flex;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: transparent;
+        border: 0;
+
+        &:hover, &:focus{
+            background-color: transparent !important;
+            color: $principal;
+        }
+    }
 }
