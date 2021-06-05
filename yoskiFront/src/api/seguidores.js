@@ -1,21 +1,24 @@
 import { HOST } from "./variablesGlobales";
 import { getTokenApi } from "./autentificacion";
 
-export function getNegocioApi(id) {
+// EXISTE UNA RELACION
+export function existeRelacionApi(idNegocio) {
   //Ponemos el endPoint al que consultaremos los datos
-  const url = `${HOST}/verPerfil?id=${id}`;
+  const url = `${HOST}/existeRelacion?id=${idNegocio}`;
+  // Parametros
   const params = {
     method: "GET",
     headers: {
-      "Content-type": "application/json",
       Authorization: `Bearer ${getTokenApi()}`,
     },
   };
 
+  // Hacemos la peticionç
+
   return fetch(url, params)
     .then((response) => {
       // si devuelve 400, 401, etc..
-      if (response.status >= 400) throw null;
+      // if (response.status >= 400) throw null;
       return response.json();
     })
     .then((result) => {
@@ -26,21 +29,16 @@ export function getNegocioApi(id) {
     });
 }
 
-// subir banner
-export function subirBannerApi(file) {
+// sEGU9IR AL NEGOCIO
+export function seguirNegocioApi(idNegocio) {
   //Ponemos el endPoint al que consultaremos los datos
-  const url = `${HOST}/subirBanner`;
-  // Creamos el objeto y le añadimos el archivo: Esto es para que nos coja bien el body de nuestra peticion
-  const formData = new FormData();
-  console.log(formData);
-  formData.append("banner", file);
+  const url = `${HOST}/crearRelacion?id=${idNegocio}`;
   // Parametros
   const params = {
     method: "POST",
     headers: {
       Authorization: `Bearer ${getTokenApi()}`,
     },
-    body: formData,
   };
 
   // Hacemos la peticionç
@@ -59,25 +57,19 @@ export function subirBannerApi(file) {
     });
 }
 
-// Subir avatar
-export function subirAvatarApi(file) {
+// DEJAR DE SEGUIR AL NEGOCIO
+export function dejarSeguirNegocioApi(idNegocio) {
   //Ponemos el endPoint al que consultaremos los datos
-  const url = `${HOST}/subirAvatar`;
-  // Creamos el objeto y le añadimos el archivo: Esto es para que nos coja bien el body de nuestra peticion
-  const formData = new FormData();
-  console.log(formData);
-  formData.append("avatar", file);
+  const url = `${HOST}/borrarRelacion?id=${idNegocio}`;
   // Parametros
   const params = {
-    method: "POST",
+    method: "DELETE",
     headers: {
       Authorization: `Bearer ${getTokenApi()}`,
     },
-    body: formData,
   };
 
   // Hacemos la peticionç
-
   return fetch(url, params)
     .then((response) => {
       // si devuelve 400, 401, etc..
@@ -86,31 +78,6 @@ export function subirAvatarApi(file) {
     })
     .then((result) => {
       return result;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
-
-//modificar negocio
-export function modificarInfoApi(datos) {
-  //Ponemos el endPoint al que consultaremos los datos
-  const url = `${HOST}/modificarPerfilNegocio`;
-  // Parametros
-  const params = {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${getTokenApi()}`,
-    },
-    body: JSON.stringify(datos),
-  };
-
-  // Hacemos la peticionç
-  return fetch(url, params)
-    .then((response) => {
-      // si devuelve 400, 401, etc..
-      // if (response.status >= 400) throw null;
-      return response.json();
     })
     .catch((err) => {
       return err;

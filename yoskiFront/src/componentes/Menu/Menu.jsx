@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 // traemos la funcion para cerrar la sesion
 import {cerrarSesionApi} from "../../api/autentificacion";
 // traemos la fucnion que nos dice lsod atos del usuario
 import negocioAuth, {NegocioAuth} from "../../hooks/negocioAuth";
+import VentanaPublicacion from "../VentanaPublicaciones/VentanaPublicaciones";
 // iconos
 import Logo from '../../img/logo_yoski_verde_claro.png';
 import Inicio from '../../img/inicio.svg'; 
@@ -14,6 +15,7 @@ import Salir from '../../img/exit.svg';
 
 // Estilos
 import "./Menu.scss";
+import VentanaPublicaciones from '../VentanaPublicaciones/VentanaPublicaciones';
 
 export default function Menu() {
     //Esta funcion ayuda a recuperr la info que tenemos del negocio logueado en el contexto
@@ -24,6 +26,8 @@ export default function Menu() {
         // refrescamos la pagina para qu enos obligue a salir :D es la unica solucion que he encontrado jeje
         window.location.reload();
     }
+    // Venatan de publicaciones
+    const [abrirVentana, setAbrirVentana] = useState(true)
 
     return (
         <div className="menu">
@@ -41,7 +45,8 @@ export default function Menu() {
                 <img className="icons" src={Salir} alt="salir"/> Salir
             </Link>
 
-            <Button>Publicar</Button>
+            <Button onClick={() => setAbrirVentana(true)} >Publicar</Button>
+            <VentanaPublicaciones show={abrirVentana} setShow={setAbrirVentana} />
         </div>
     )
 }

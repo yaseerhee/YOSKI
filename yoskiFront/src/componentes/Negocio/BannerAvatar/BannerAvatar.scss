@@ -40,7 +40,15 @@
             &:hover{
                 background-color: $principal;
                 opacity: 0.6;
+
+            }
+            &.dejar{
+                &:hover{
+                    border-color: $error;
+                    background-color: $error;
+                }
             }
         }
+
     }
 }

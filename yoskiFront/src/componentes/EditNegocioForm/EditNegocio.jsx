@@ -1,9 +1,7 @@
 import React, {useState, useCallback} from 'react';
-import {Form, Button, Row, Col} from "react-bootstrap";
+import {Form, Button, Row, Col, Spinner} from "react-bootstrap";
 import {HOST} from "../../api/variablesGlobales";
 import {toast} from "react-toastify";
-// importamos icono
-//import Banner from "../../img/imagen.svg";
 //Ficheros subir
 import {useDropzone} from "react-dropzone";
 // Añadimos la s libreria s para calendario en español
@@ -11,11 +9,10 @@ import DatePicker from 'react-datepicker';
 import es from "date-fns/locale/es";
 import "./EditNegocio.scss";
 // Funciones que se conectan al Backend
-import {subirBannerApi, subirAvatarApi} from "../../api/negocio";
-
-
+import {subirBannerApi, subirAvatarApi, modificarInfoApi} from "../../api/negocio";
 
 export default function EditNegocio(props) {
+    const [loading, setLoading] = useState(false);
     //rECOGEMOS NUESTRA VENTANA
     const {negocio, setAbrirModal} = props;
     // Recogemos los valores de nuestro negocio
@@ -70,24 +67,35 @@ export default function EditNegocio(props) {
        onDrop: onDropAvatar //Le pasamos el fichero a nuestra variable
    });
 
-// / --------------- datos negocio
-const modificarValoresNegocio = (e) => {
-    // Esto va asignar el valor de cada target al name
-    setFormData({...formData, [ e.target.name]: e.target.value,})
-}
+    // / --------------- datos negocio
+    const modificarValoresNegocio = (e) => {
+        // Esto va asignar el valor de cada target al name
+        setFormData({...formData, [ e.target.name]: e.target.value,})
+    }
     // console.log(negocio);
-    const modificoInfo = e =>{
+    //Le decimos que lo ejecute de forma asincronsa
+    const modificoInfo = async(e) =>{
         e.preventDefault();
+        //Para que muestre el Spinner mientras se hace el cambio /peticiones
+        setLoading(true);
         if(bannerFile){
-            subirBannerApi(bannerFile).catch(() => {
+            await subirBannerApi(bannerFile).catch(() => {
                 toast.error("Fallo al cambiar el Banner");
             });
         }
         if(avatarFile){
-            subirAvatarApi(avatarFile).catch(() => {
+            await subirAvatarApi(avatarFile).catch(() => {
                 toast.error("Fallo al cambiar el Avatar");
             });
         }
+        // modificamos los datos del negocio los haya modificado o no
+       await modificarInfoApi(formData).then(()=>{
+            setAbrirModal(false);
+        }).catch(() => {
+            toast.error("Error al modificar los datos");
+        });
+        //Esto se ejecutará lo último
+        window.location.reload();
     }
 
 
@@ -102,8 +110,6 @@ const modificarValoresNegocio = (e) => {
                 <input {...getInputAvatarProps()} />
                 {/* <img alt="camara" className="iconos" src={Banner} /> */}
             </div>
-
-
             <Form onSubmit={modificoInfo}>
                 <Form.Group>
                     <Row>
@@ -124,12 +130,10 @@ const modificarValoresNegocio = (e) => {
                 <Form.Group>
                         <DatePicker placeholder="Fecha de Creación" name="fechaCreacion" locale={es} selected={new Date(formData.fechaCreacion)} onChange={date => setFormData({...formData, fechaCreacion: date})}/>
                 </Form.Group>
-                <Button className="btn-submit" variant="primary" type="submit">Actualizar</Button>
-            </Form>
+                <Button className="btn-submit" variant="primary" type="submit">{loading && <Spinner animation="border" size="sm"/>}Actualizar</Button>            </Form>
         </div>
     )
 }
-
 
 function validarValores(negocio){
         // Si existe el valor lo mostramos si no lo dejamos vacio
