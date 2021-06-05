@@ -12,4 +12,13 @@
             font-weight: bold;
         }
     }
+
+
+    &-publicaciones{
+        h3{
+            padding: 15px ;
+            font-size: 18px;
+            border-bottom: 1px solid $borde-gris;
+        }
+    }
 }

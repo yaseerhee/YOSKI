@@ -27,7 +27,7 @@ export default function Menu() {
         window.location.reload();
     }
     // Venatan de publicaciones
-    const [abrirVentana, setAbrirVentana] = useState(true)
+    const [abrirVentana, setAbrirVentana] = useState(false)
 
     return (
         <div className="menu">

@@ -43,6 +43,9 @@
 
                 .contador{
                     margin: 15px;
+                    &.error{
+                       color: $error; 
+                    }
                 }
 
                 button{

@@ -3,12 +3,13 @@ import Contenido from "../../componentes/Contenido/Contenido";
 // Sirve para sacar todos los datos de esa ruta
 import {withRouter} from "react-router-dom";
 import {getNegocioApi} from "../../api/negocio";
+import {obtenerPublicacionNegocioApi} from "../../api/publicaciones";
 import negocioAuth from "../../hooks/negocioAuth";
 import {toast} from "react-toastify";
 import {Button, Spinner} from 'react-bootstrap';
 import BannerAvatar from "../../componentes/Negocio/BannerAvatar/BannerAvatar";
 import InfoNegocio from "../../componentes/Negocio/InfoNegocio/InfoNegocio";
-
+import ListarPublicaciones from "../../componentes/ListarPublicaciones/ListarPublicaciones";
 import "./Negocio.scss";
 
 function Negocio(props) {
@@ -32,6 +33,18 @@ function Negocio(props) {
         });
         // Se va a ejecutar cada vez que los params cambien
     },[match.params])
+// ------------------publicaciones
+    const [publicaciones, setPublicaciones] = useState(null);
+    useEffect(() => {
+        // EJECUTAMOS LA FUNCION QUE NOS DEVUELVE TWEETS
+       obtenerPublicacionNegocioApi(match.params.id, 1).then(response => {
+            //PASAMOS RESPUESTA
+           setPublicaciones(response);
+       }).catch(() => {
+        //    Caso de error publicaciones vacias
+           setPublicaciones([]);
+       });
+    }, [match.params])
     return (
         <Contenido className="negocio">
            <div className="negocio-titulo">
@@ -39,7 +52,11 @@ function Negocio(props) {
            </div>
            <BannerAvatar negocio={negocio} negocioActual={negocioActual} />
            <InfoNegocio negocio={negocio} />
-           <div className="negocio-publicaciones">Lista de publicaciones</div>
+           <div className="negocio-publicaciones">
+               <h3>Publicaciones</h3>
+               {/* Si el negocio tiene publicaciones las muestra y sino  */}
+               {publicaciones && <ListarPublicaciones publicaciones={publicaciones} />}
+           </div>
         </Contenido>
     )
 }
