@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Spinner, ButtonGroup, Button, Row, Col} from "react-bootstrap";
+import {Spinner, ButtonGroup, Button, Row, Col, Form} from "react-bootstrap";
 import {withRouter} from "react-router-dom";
 import { isEmpty} from "lodash";
 import queryString from "query-string";
@@ -81,7 +81,7 @@ function Negocios(props) {
                 <div className="negocios-title">   
                         <h2>Negocios</h2>
                         {/* Cada vez que cambie el valor del input enviamos los datos al history que se encarga de pasarlospor url */}
-                        <input type="text" placeholder="Busca la empresa" onChange={(e) => history.push({search: queryString.stringify({...params, buscando: e.target.value})})}/>
+                        <Form.Control type="text" placeholder="Busca la empresa" onChange={(e) => history.push({search: queryString.stringify({...params, buscando: e.target.value})})}/>
                 </div>
                 <ButtonGroup className="opciones">
                     {/* Para que al pinchar en cada boton se nos filtren */}

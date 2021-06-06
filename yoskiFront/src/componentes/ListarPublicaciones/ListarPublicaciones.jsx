@@ -55,6 +55,7 @@ function Publicacion(props){
                 <div>
                     {publicacion.mensaje}
                 </div>
+                
             </div>
         </div>
     )

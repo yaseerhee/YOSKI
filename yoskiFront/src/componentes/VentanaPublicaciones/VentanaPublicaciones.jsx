@@ -49,7 +49,7 @@ export default function VentanaPublicaciones(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={publicar}>
-                    <Form.Control as="textarea" row="10" placeholder="¿Que te ha pasado hoy?" onChange={(e) => setMsg(e.target.value)} />
+                    <Form.Control as="textarea" row="10" placeholder="Comparte con tus seguidores..." onChange={(e) => setMsg(e.target.value)} />
                     {/* Condicion por si supera los 255 que se ponga en rojo y no deje publicark */}
                     <span className={classNames("contador", {error: msg.length > maxLongitud})}>
                         {/* //SE VA A ENCARGAR DE DECIRNOS CUANTAS LETRAS TIENE POR TEMA DE QUE SE ROMPE LA BASE DE DATOS */}

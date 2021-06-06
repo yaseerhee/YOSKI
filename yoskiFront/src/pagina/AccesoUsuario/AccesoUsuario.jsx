@@ -58,8 +58,8 @@ function ComponentIzq(props) {
         <Col className="acceso-usuario-izq" xs={6}>
            <div>
                <img src={Logo} alt="logo" />
-               <h2>Por un crecimiento de los pequeños negocios!</h2>
-               <h3>Vamos a ayudarnos! ~ YASER HADDAD</h3>
+               <h2>Por un crecimiento empresarial!</h2>
+               <h3>Vamos a ayudarnos! ~ YASER HADDAD ( CEO of YOSKI S.L. )</h3>
                <Button onClick={() => {abrirVent(<FormRegistro setmostrarVentana={setmostrarVentana} />)}} variant="primary">Regístrate</Button>
                <Button onClick={() => {abrirVent(<FormInicio setCompSesion={setCompSesion}/>)}}variant="outline-light">Iniciar Sesión</Button>
            </div>
